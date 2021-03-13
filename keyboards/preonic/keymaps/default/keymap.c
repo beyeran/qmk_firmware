@@ -16,10 +16,11 @@
 
 #include QMK_KEYBOARD_H
 #include "muse.h"
+#include "keymap_german.h"
 
 enum preonic_layers {
   _QWERTY,
-  _FLUX,
+  _BONE2,
   _DVORAK,
   _LOWER,
   _RAISE,
@@ -58,24 +59,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
-/* FLUX
+/* BONE2
  * ,-----------------------------------------------------------------------------------.
  * |   `  |   7  |   5  |   3  |   1  |   9  |   0  |   2  |   4  |   6  |   8  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Tab  |   j  |   d  |   u  |   a  |   x  |   p  |   h  |   l  |   m  |   m  |  w   |
+ * | Tab  |   j  |   d  |   u  |   a  |   x  |   p  |   h  |   l  |   m  |   w  |      |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * | Esc  |   c  |   t  |   i  |   e  |   o  |   b  |   n  |   r  |   s  |   g  |  q   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   f  |   v  |   v  |   ü  |   ä  |   ö  |   y  |   z  |   ,  |   .  |  k   |
+ * | Shift|   f  |   v  |   ü  |   ä  |   ö  |   y  |   z  |   ,  |   .  |   k  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Brite| Ctrl | Alt  | GUI  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
-[_FLUX] = LAYOUT_preonic_grid(
+[_BONE2] = LAYOUT_preonic_grid(
   KC_ESC,  KC_7,    KC_5,    KC_3,    KC_1,    KC_9,    KC_0,    KC_2,    KC_4,    KC_6,    KC_8,    KC_BSPC,
-  KC_TAB,  KC_J,    KC_G,    KC_U,    KC_A,    KC_X,    KC_W,    KC_D,    KC_C,    KC_L,    KC_F,    KC_ENT,
-  KC_GRV,  KC_H,    KC_M,    KC_I,    KC_E,    KC_O,    KC_B,    KC_T,    KC_N,    KC_R,    KC_S,    KC_SLSH,
-  KC_LSFT, KC_K,    KC_V,    KC_C,    KC_V,    KC_Y,    KC_P,    KC_COMM, KC_DOT,  KC_Z,    KC_Q,    KC_RSFT,
+  KC_TAB,  KC_J,    KC_D,    KC_U,    KC_A,    KC_X,    KC_P,    KC_H,    KC_L,    KC_M,    KC_W,    KC_ENT,
+  KC_GRV,  KC_C,    KC_T,    KC_I,    KC_E,    KC_O,    KC_B,    KC_N,    KC_R,    KC_S,    KC_G,    KC_Q,
+  KC_LSFT, KC_F,    KC_V,    DE_UE,   DE_AE,   DE_OE,   KC_Y,    KC_Z,    KC_COMM, KC_DOT,  KC_K,    KC_RSFT,
   BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
@@ -114,10 +115,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_preonic_grid(
-  KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_LEFT, KC_UP,   KC_DOWN, KC_RIGHT,
-  KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_DEL,
-  KC_DEL,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE,
-  _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,S(KC_NUHS),S(KC_NUBS),KC_HOME, KC_END, _______,
+  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
+  KC_TILD, KC_UNDS, KC_LBRC, KC_RBRC, KC_CIRC, KC_EXLM, KC_LT,   KC_GT,   KC_EQL,  KC_AMPR, KC_RPRN, _______,
+  KC_BSLS, KC_SLSH, KC_LCBR, KC_RCBR, KC_ASTR, KC_QUES, KC_LPRN, KC_RPRN, KC_MINS, KC_COLN, KC_AT,   _______,
+  KC_HASH, KC_DLR,  KC_PIPE, KC_TILD, KC_GRV,  KC_PLUS, KC_PERC, KC_DQT,  KC_QUOT, KC_SCLN, _______, _______,
   _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
 ),
 
@@ -176,7 +177,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           break;
         case COLEMAK:
           if (record->event.pressed) {
-            set_single_persistent_default_layer(_FLUX);
+            set_single_persistent_default_layer(_BONE2);
           }
           return false;
           break;
