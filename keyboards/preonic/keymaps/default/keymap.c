@@ -137,10 +137,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_RAISE] = LAYOUT_preonic_grid(
     _______, _______, _______, _______, _______,  _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
-    _______, KC_1,    KC_2,    KC_3,    _______,  _______, KC_LT,   KC_GT,   KC_EQL,  KC_AMPR, KC_RPRN, DE_ADIA,
-    _______, KC_4,    KC_5,    KC_6,    _______,  _______, KC_LPRN, KC_RPRN, KC_MINS, KC_DQT,  KC_AT,   DE_ODIA,
-    _______, KC_7,    KC_8,    KC_9,    _______,  _______, KC_PERC, KC_DQT,  KC_QUOT, KC_COLN, KC_SCLN, DE_UDIA,
-    _______, _______, KC_0,    _______, _______,  _______, _______, _______, _______, _______, DE_SECT, DE_SS
+    _______, _______, KC_1,    KC_2,    KC_3,     _______, KC_LT,   KC_GT,   KC_EQL,  KC_AMPR, KC_RPRN, DE_ADIA,
+    _______, _______, KC_4,    KC_5,    KC_6,     _______, KC_LPRN, KC_RPRN, KC_MINS, KC_DQT,  KC_AT,   DE_ODIA,
+    _______, _______, KC_7,    KC_8,    KC_9,     _______, KC_PERC, KC_DQT,  KC_QUOT, KC_COLN, KC_SCLN, DE_UDIA,
+    _______, _______, _______, KC_0,    _______,  _______, _______, _______, _______, _______, DE_SECT, DE_SS
 ),
 
 /* Adjust (Lower + Raise)
