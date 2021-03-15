@@ -115,11 +115,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_preonic_grid(
-  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
-  KC_TILD, KC_UNDS, KC_LBRC, KC_RBRC, KC_CIRC, KC_EXLM, KC_LT,   KC_GT,   KC_EQL,  KC_AMPR, KC_RPRN, DE_ADIA,
-  KC_BSLS, KC_SLSH, KC_LCBR, KC_RCBR, KC_ASTR, KC_QUES, KC_LPRN, KC_RPRN, KC_MINS, KC_DQT,  KC_AT,   DE_ODIA,
-  KC_HASH, KC_DLR,  KC_PIPE, KC_TILD, KC_GRV,  KC_PLUS, KC_PERC, KC_DQT,  KC_QUOT, KC_COLN, KC_SCLN, DE_UDIA,
-  DE_ACUT, _______, _______, _______, _______, _______, _______, _______, _______, _______, DE_SECT, DE_SS
+    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______, _______, _______, _______, _______, _______,
+    KC_TILD, KC_UNDS, KC_LBRC, KC_RBRC, KC_CIRC, KC_EXLM, _______, _______, KC_UP,   _______, _______, _______,
+    KC_BSLS, KC_SLSH, KC_LCBR, KC_RCBR, KC_ASTR, KC_QUES, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
+    KC_HASH, KC_DLR,  KC_PIPE, KC_TILD, KC_GRV,  KC_PLUS, _______, _______, _______, _______, _______, _______,
+    DE_ACUT, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
 ),
 
 /* Raise
@@ -136,11 +136,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_preonic_grid(
-  _______, _______, _______, _______, _______,  _______, _______, _______, _______, _______, _______, _______,
-  _______, KC_1,    KC_2,    KC_3,    _______,  _______, _______, _______, KC_UP,   _______, _______, _______,
-  _______, KC_4,    KC_5,    KC_6,    _______,  _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
-  _______, KC_7,    KC_8,    KC_9,    _______,  _______, _______, _______, _______, _______, _______, _______,
-  _______, _______, KC_0,    _______, _______,  _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
+    _______, _______, _______, _______, _______,  _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
+    _______, KC_1,    KC_2,    KC_3,    _______,  _______, KC_LT,   KC_GT,   KC_EQL,  KC_AMPR, KC_RPRN, DE_ADIA,
+    _______, KC_4,    KC_5,    KC_6,    _______,  _______, KC_LPRN, KC_RPRN, KC_MINS, KC_DQT,  KC_AT,   DE_ODIA,
+    _______, KC_7,    KC_8,    KC_9,    _______,  _______, KC_PERC, KC_DQT,  KC_QUOT, KC_COLN, KC_SCLN, DE_UDIA,
+    _______, _______, KC_0,    _______, _______,  _______, _______, _______, _______, _______, DE_SECT, DE_SS
 ),
 
 /* Adjust (Lower + Raise)
