@@ -1,5 +1,4 @@
 UNICODE_ENABLE = yes
-GERMAN_ENABLE = yes
 NKRO_ENABLE = yes
 
 SRC += muse.c
