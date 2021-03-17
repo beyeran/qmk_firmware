@@ -18,6 +18,8 @@
 #include "muse.h"
 #include "keymap_german.h"
 
+#define KC_APE LALT(LCTL(KC_DEL))
+
 enum preonic_layers {
   _QWERTY,
   _BONE2,
@@ -95,9 +97,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_DVORAK] = LAYOUT_preonic_grid(
   KC_ESC,  KC_7,    KC_5,    KC_3,    KC_1,    KC_9,    KC_0,    KC_2,    KC_4,    KC_6,    KC_8,    KC_BSPC,
-  KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_ENT,
+  KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Z,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_ENT,
   KC_GRV,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_SLSH,
-  KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_RSFT,
+  KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Y,    KC_RSFT,
   KC_CAPS, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_RALT, KC_RGUI, KC_RCTL, KC_RSPC
 ),
 
@@ -115,11 +117,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_preonic_grid(
-    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9, KC_F10, KC_F11,  KC_F12,
-    DE_TILD, DE_EXLM, DE_AT,   DE_LCBR, DE_RCBR, DE_PIPE, DE_LABK, KC_7,    KC_8,  KC_9,   DE_ASTR, DE_SCLN,
-    DE_QUOT, DE_HASH, DE_DLR,  DE_LPRN, DE_RPRN, DE_GRV,  DE_RABK, KC_4,    KC_5,  KC_6,   DE_PLUS, DE_COLN,
-    DE_DQOT, DE_PERC, DE_CIRC, DE_LBRC, DE_RBRC, DE_SLSH, DE_AMPR, KC_1,    KC_2,  KC_3,   DE_BSLS, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, KC_0,  DE_EQL, _______, _______
+    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9, KC_F10,  KC_F11,  KC_F12,
+    DE_TILD, DE_EXLM, DE_AT,   DE_LCBR, DE_RCBR, DE_PIPE, DE_QUES, KC_7,    KC_8,  KC_9,    DE_ASTR, DE_SCLN,
+    DE_QUOT, DE_HASH, DE_DLR,  DE_LPRN, DE_RPRN, DE_SLSH, DE_EQL,  KC_4,    KC_5,  KC_6,    DE_PLUS, DE_COLN,
+    DE_DQOT, DE_PERC, DE_CIRC, DE_LBRC, DE_RBRC, DE_GRV,  DE_AMPR, KC_1,    KC_2,  KC_3,    DE_BSLS, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, KC_0,  _______, _______, _______
 ),
 
 /* Raise
@@ -136,10 +138,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_preonic_grid(
-    _______, _______, KC_7,    KC_8,    KC_9,    _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, KC_4,    KC_5,    KC_6,    _______, _______, _______, KC_UP,   _______, _______, _______,
-    _______, _______, KC_1,    KC_2,    KC_3,    _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
-    _______, _______, _______, KC_0,    _______, _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, DE_LABK, DE_RABK, _______, _______, _______, KC_UP,   _______, _______, KC_APE,
+    _______, DE_AE,   DE_UE,   DE_OE,   DE_SS,   _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
+    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
 ),
 
