@@ -49,6 +49,18 @@
 #define M_LABK S(DE_LABK)
 #define M_RABK S(DE_RABK)
 
+// Home row modifier setup
+#define GUI_A LGUI_T(DE_A)
+#define ALT_O LALT_T(DE_O)
+#define SFT_E LSFT_T(DE_E)
+#define CTL_F LCTL_T(DE_U)
+
+#define CTL_H RCTL_T(DE_H)
+#define SF2_T RSFT_T(DE_T)
+#define ALT_N LALT_T(DE_N)
+#define GUI_S RGUI_T(DE_S)
+
+
 enum preonic_layers {
   _QWERTY,
   _BONE2,
@@ -71,6 +83,7 @@ enum preonic_keycodes {
   BACKLIT
 };
 
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_QWERTY] = LAYOUT_preonic_grid(
   KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
@@ -91,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_DVORAK] = LAYOUT_preonic_grid(
   KC_ESC,  KC_7,    KC_5,    KC_3,    KC_1,    KC_9,    KC_0,    KC_2,    KC_4,    KC_6,    KC_8,    KC_BSPC,
   KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Z,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_ENT,
-  KC_GRV,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_SLSH,
+  KC_GRV,  GUI_A,   ALT_O,   SFT_E,   CTL_F,   KC_I,    KC_D,    CTL_H,   SF2_T,   ALT_N,   GUI_S,   KC_SLSH,
   KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Y,    KC_RSFT,
   KC_CAPS, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_RALT, KC_RGUI, KC_RCTL, KC_RSPC
 ),
@@ -99,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_MDVORAK] = LAYOUT_preonic_grid(
   KC_ESC,  KC_7,    KC_5,    KC_3,    KC_1,    KC_9,    KC_0,    KC_2,    KC_4,    KC_6,    KC_8,    KC_BSPC,
   KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Z,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_ENT,
-  KC_GRV,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_SLSH,
+  KC_GRV,  GUI_A,   ALT_O,   SFT_E,   CTL_F,   KC_I,    KC_D,    CTL_H,   SF2_T,   ALT_N,   GUI_S,   KC_SLSH,
   KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Y,    KC_RSFT,
   KC_CAPS, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  MRAISE,  KC_RALT, KC_RGUI, KC_RCTL, KC_RSPC
 ),
