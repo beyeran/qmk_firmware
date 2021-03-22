@@ -161,24 +161,28 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       persistent_default_layer_set(1UL<<_QWERTY);
     }
+    SEND_STRING(SS_TAP(X_F15));
     return false;
     break;
   case BONE2:
     if (record->event.pressed) {
       persistent_default_layer_set(1UL<<_BONE2);
     }
+    SEND_STRING(SS_TAP(X_F16));
     return false;
     break;
   case DVORAK:
     if (record->event.pressed) {
       persistent_default_layer_set(1UL<<_DVORAK);
     }
+    SEND_STRING(SS_TAP(X_F17));
     return false;
     break;
   case MDVORAK:
     if (record->event.pressed) {
       persistent_default_layer_set(1UL<<_MDVORAK);
     }
+    SEND_STRING(SS_TAP(X_F18));
     return false;
     break;
   case LOWER:
