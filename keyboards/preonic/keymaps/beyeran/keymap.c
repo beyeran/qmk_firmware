@@ -27,7 +27,7 @@
 #define M_RCBR A(DE_9)
 #define M_PIPE A(DE_7)
 #define M_QUES S(DE_SS)
-#define M_ASTR S(DE_ACUT)
+#define M_ASTR S(DE_PLUS)
 #define M_SCLN S(DE_COMM)
 #define M_QUOT S(DE_HASH)
 #define M_HASH KC_NUHS
@@ -135,7 +135,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_LOWER] = LAYOUT_preonic_grid(
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, M_LABK,  M_RABK,  _______, _______, _______, KC_UP,   _______, _______, KC_APE,
+    _______, _______, _______, DE_LABK, DE_RABK, _______, _______, _______, KC_UP,   _______, _______, KC_APE,
     _______, DE_AE,   DE_UE,   DE_OE,   DE_SS,   _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
