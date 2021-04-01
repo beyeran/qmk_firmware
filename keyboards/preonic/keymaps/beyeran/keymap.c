@@ -146,7 +146,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_ADJUST] = LAYOUT_preonic_grid(
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
   _______, RESET,   DEBUG,   _______, _______, _______, _______, TERM_ON, TERM_OFF,_______, _______, KC_DEL,
-  _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  BONE2,   DVORAK,  MDVORAK, _______,
+  _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AU_TOG,  AG_SWAP, QWERTY,  BONE2,   DVORAK,  MDVORAK, _______,
   _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, _______, _______,
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 )
@@ -157,10 +157,18 @@ void persistent_default_layer_set(uint16_t default_layer) {
   default_layer_set(default_layer);
 }
 
+float tone_colemak[][2] = SONG(COLEMAK_SOUND);
+float tone_dvorak[][2]  = SONG(DVORAK_SOUND);
+float tone_qwerty[][2]  = SONG(QWERTY_SOUND);
+float tone_workman[][2] = SONG(WORKMAN_SOUND);
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
   case QWERTY:
     if (record->event.pressed) {
+      #ifdef AUDIO_ENABLE
+      PLAY_SONG(tone_qwerty);
+      #endif
       persistent_default_layer_set(1UL<<_QWERTY);
     }
     SEND_STRING(SS_TAP(X_F15));
@@ -168,6 +176,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
   case BONE2:
     if (record->event.pressed) {
+      #ifdef AUDIO_ENABLE
+      PLAY_SONG(tone_colemak);
+      #endif
       persistent_default_layer_set(1UL<<_BONE2);
     }
     SEND_STRING(SS_TAP(X_F16));
@@ -175,6 +186,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
   case DVORAK:
     if (record->event.pressed) {
+      #ifdef AUDIO_ENABLE
+      PLAY_SONG(tone_dvorak);
+      #endif
       persistent_default_layer_set(1UL<<_DVORAK);
     }
     SEND_STRING(SS_TAP(X_F17));
@@ -182,6 +196,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
   case MDVORAK:
     if (record->event.pressed) {
+      #ifdef AUDIO_ENABLE
+      PLAY_SONG(tone_workman);
+      #endif
       persistent_default_layer_set(1UL<<_MDVORAK);
     }
     SEND_STRING(SS_TAP(X_F18));
