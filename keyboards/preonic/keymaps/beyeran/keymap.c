@@ -20,6 +20,10 @@
 
 #include "pomodoro.h"
 
+#ifndef MAX
+#   define MAX(X, Y) ((X) > (Y) ? (X) : (Y))
+#endif
+
 #define KC_APE LALT(LCTL(KC_DEL))
 
 #define M_TILD A(DE_N)
@@ -82,7 +86,8 @@ enum preonic_keycodes {
   MRAISE,
   LOWER,
   RAISE,
-  BACKLIT
+  BACKLIT,
+  PMDR_ON
 };
 
 
@@ -145,7 +150,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_ADJUST] = LAYOUT_preonic_grid(
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
-  _______, RESET,   DEBUG,   _______, _______, _______, _______, TERM_ON, TERM_OFF,_______, _______, KC_DEL,
+  _______, RESET,   DEBUG,   _______, PMDR_ON, _______, _______, TERM_ON, TERM_OFF,_______, _______, KC_DEL,
   _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AU_TOG,  AG_SWAP, QWERTY,  BONE2,   DVORAK,  MDVORAK, _______,
   _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, _______, _______,
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
@@ -161,6 +166,24 @@ float tone_colemak[][2] = SONG(COLEMAK_SOUND);
 float tone_dvorak[][2]  = SONG(DVORAK_SOUND);
 float tone_qwerty[][2]  = SONG(QWERTY_SOUND);
 float tone_workman[][2] = SONG(WORKMAN_SOUND);
+
+uint32_t pomodoro_start_timer = 0;
+
+void pomodoro(void) {
+  if (pomodoro_start_timer == 0) {
+    pomodoro_start_timer = timer_read32();
+  } else {
+    const uint32_t time_s = MAX(0, 60 - (timer_elapsed32(pomodoro_start_timer) / 1000));
+
+    if (time_s == 0) {
+      pomodoro_start_timer = 0;
+
+#ifdef AUDIO_ENABLE
+      PLAY_SONG(tone_colemak);
+#endif
+    }
+  }
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
@@ -236,6 +259,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     break;
   case BACKLIT:
     return true;
+    break;
+  case PMDR_ON:
+    pomodoro();
+    return false;
     break;
   default:
     return true;
