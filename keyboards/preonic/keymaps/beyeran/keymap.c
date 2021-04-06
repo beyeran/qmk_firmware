@@ -112,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_MDVORAK] = LAYOUT_preonic_grid(
   KC_ESC,  KC_7,    KC_5,    KC_3,    KC_1,    KC_9,    KC_0,    KC_2,    KC_4,    KC_6,    KC_8,    KC_BSPC,
   KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Z,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_ENT,
-  KC_GRV,  GUI_A,   ALT_O,   SFT_E,   CTL_F,   KC_I,    KC_D,    CTL_H,   SF2_T,   ALT_N,   GUI_S,   KC_SLSH,
+  KC_ESC,  GUI_A,   ALT_O,   SFT_E,   CTL_F,   KC_I,    KC_D,    CTL_H,   SF2_T,   ALT_N,   GUI_S,   KC_SLSH,
   KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Y,    KC_RSFT,
   KC_CAPS, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  MRAISE,  KC_RALT, KC_RGUI, KC_RCTL, KC_RSPC
 ),
