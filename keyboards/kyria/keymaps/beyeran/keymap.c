@@ -34,6 +34,36 @@ enum keycodes {
   ADJUST
 };
 
+// Mac Special Character
+
+#define M_TILD A(DE_N)
+#define M_EXLM S(DE_1)
+#define M_AT   A(DE_L)
+#define M_LCBR A(DE_8)
+#define M_RCBR A(DE_9)
+#define M_PIPE A(DE_7)
+#define M_QUES S(DE_SS)
+#define M_ASTR S(DE_PLUS)
+#define M_SCLN S(DE_COMM)
+#define M_QUOT S(DE_HASH)
+#define M_HASH KC_NUHS
+#define M_DLR  S(DE_4)
+#define M_LPRN S(DE_8)
+#define M_RPRN S(DE_9)
+#define M_SLSH S(DE_7)
+#define M_EQL  S(DE_0)
+#define M_PLUS KC_RBRC
+#define M_COLN S(DE_DOT)
+#define M_DQOT S(DE_2)
+#define M_PERC S(DE_5)
+#define M_CIRC KC_GRV
+#define M_LBRC A(DE_5)
+#define M_RBRC A(DE_6)
+#define M_GRV  S(DE_ACUT)
+#define M_AMPR S(DE_6)
+#define M_BSLS S(A(DE_7))
+#define M_LABK S(DE_LABK)
+#define M_RABK S(DE_RABK)
 
 // Home row modifier setup
 #define GUI_A LGUI_T(DE_A)
@@ -123,10 +153,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `----------------------------------'  `----------------------------------'
  */
     [_LOWER] = LAYOUT(
-      _______, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE,                                     _______, _______, _______, _______, _______, KC_BSLS,
-      _______, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,                                      KC_PLUS, KC_MINS, KC_SLSH, KC_ASTR, KC_PERC, KC_QUOT,
-      _______, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, _______, _______, _______, _______, KC_AMPR, KC_EQL,  KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
-                                 _______, _______, _______, KC_SCLN, KC_EQL,  KC_EQL,  KC_SCLN, _______, _______, _______
+      _______, M_EXLM, M_AT,   M_LCBR, M_RCBR, M_PIPE,                                      _______, _______, _______, _______, _______, M_BSLS,
+      _______, M_HASH, M_DLR,  M_LPRN, M_RPRN, M_GRV,                                       M_PLUS,  KC_MINS, M_SLSH,  M_ASTR,  M_PERC,  M_QUOT,
+      _______, M_PERC, M_CIRC, M_LBRC, M_RBRC, M_TILD, _______, _______, _______, _______,  M_AMPR,  M_EQL,   KC_COMM, KC_DOT,  M_SLSH,  KC_MINS,
+                                 _______, _______, _______, M_SCLN, M_EQL,  M_EQL,  M_SCLN, _______, _______, _______
     ),
 /*
  * Raise Layer: Number keys, media, navigation
