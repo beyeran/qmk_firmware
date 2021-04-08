@@ -19,6 +19,10 @@
 #ifdef OLED_DRIVER_ENABLE
 #include "oled.h"
 #endif
+#ifdef ENCODER_ENABLE
+#include "encoder.h"
+#endif
+
 
 //------------------------------
 // Helpers to construct layouts
@@ -48,25 +52,3 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [RAISE]  = LAYOUT_wrapper(COMPOSE_LAYER(RAISE)),
     [ADJUST] = LAYOUT_wrapper(COMPOSE_LAYER(ADJUST)),
 };
-
-
-#ifdef ENCODER_ENABLE
-void encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == 0) {
-        // Volume control
-        if (clockwise) {
-          tap_code(KC_VOLU);
-        } else {
-          tap_code(KC_VOLD);
-        }
-    }
-    else if (index == 1) {
-        // Page up/Page down
-        if (clockwise) {
-          tap_code(KC_DOWN);
-        } else {
-          tap_code(KC_UP);
-        }
-    }
-}
-#endif
