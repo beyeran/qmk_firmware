@@ -5,15 +5,47 @@
 
 enum layers {
   DVORAK,
+  WIN_DVORAK,
   BONE,
   LOWER,
   RAISE,
-  ADJUST,
+  WIN_RAISE,
+  ADJUST
 };
 
 enum custom_keycodes {
   POMODORO_TOGGLE = SAFE_RANGE
 };
+
+// "Localization" for win
+#define W_TILD ALGR(KC_RBRC)
+#define W_EXLM S(KC_1)
+#define W_AT   ALGR(KC_Q)
+#define W_LCBR ALGR(KC_7)
+#define W_RCBR ALGR(KC_9)
+#define W_PIPE ALGR(KC_NUBS)
+#define W_QUES S(KC_MINUS)
+#define W_ASTR S(KC_RBRC)
+#define W_SCLN S(KC_COMM)
+#define W_QUOT S(KC_NUHS)
+#define W_HASH KC_NUHS
+#define W_DLR  S(KC_4)
+#define W_LPRN S(KC_8)
+#define W_RPRN S(KC_9)
+#define W_SLSH S(KC_7)
+#define W_EQL  S(KC_0)
+#define W_PLUS KC_RBRC
+#define W_COLN S(KC_DOT)
+#define W_DQUO S(KC_2)
+#define W_PERC S(KC_5)
+#define W_CIRC KC_GRV
+#define W_LBRC ALGR(KC_8)
+#define W_RBRC ALGR(KC_9)
+#define W_GRV  S(KC_EQL)
+#define W_AMPR S(DE_6)
+#define W_BSLS ALGR(KC_MINUS)
+#define W_LABK KC_NUBS
+#define W_RABK S(KC_NUBS)
 
 
 // Home row modifier setup
@@ -70,8 +102,24 @@ enum custom_keycodes {
 #define DVORAK_THUMB_ROW1_LEFT DE_UNDS, KC_CAPS,
 #define DVORAK_THUMB_ROW2_LEFT _______, KC_BSPC, MO(LOWER),  KC_ENT, KC_SPC,
 
-#define DVORAK_THUMB_ROW1_RIGHT DE_CIRC, KC_CAPS,
-#define DVORAK_THUMB_ROW2_RIGHT KC_BSPC, KC_SPC,  MO(RAISE), KC_BSPC, _______
+#define DVORAK_THUMB_ROW1_RIGHT MO(ADJUST), KC_CAPS,
+#define DVORAK_THUMB_ROW2_RIGHT KC_BSPC,    KC_SPC,  MO(RAISE), KC_BSPC, _______
+
+
+#define WIN_DVORAK_ROW1_LEFT DVORAK_ROW1_LEFT
+#define WIN_DVORAK_ROW2_LEFT DVORAK_ROW2_LEFT
+#define WIN_DVORAK_ROW3_LEFT DVORAK_ROW3_LEFT
+
+#define WIN_DVORAK_ROW1_RIGHT DVORAK_ROW1_RIGHT
+#define WIN_DVORAK_ROW2_RIGHT DVORAK_ROW2_RIGHT
+#define WIN_DVORAK_ROW3_RIGHT DVORAK_ROW3_RIGHT
+
+#define WIN_DVORAK_THUMB_ROW1_LEFT DE_UNDS, KC_CAPS,
+#define WIN_DVORAK_THUMB_ROW2_LEFT _______, KC_BSPC, MO(LOWER),  KC_ENT, KC_SPC,
+
+#define WIN_DVORAK_THUMB_ROW1_RIGHT MO(ADJUST), KC_CAPS,
+#define WIN_DVORAK_THUMB_ROW2_RIGHT KC_BSPC,    KC_SPC,  MO(WIN_RAISE), KC_BSPC, _______
+
 
 // Bone
 #define BONE_ROW1_LEFT APB_R11, DE_J,  DE_D,  DE_U,  DE_A,  DE_X,
@@ -85,8 +133,8 @@ enum custom_keycodes {
 #define BONE_THUMB_ROW1_LEFT DE_UNDS, KC_CAPS,
 #define BONE_THUMB_ROW2_LEFT _______, KC_BSPC, MO(LOWER),  KC_ENT, KC_SPC,
 
-#define BONE_THUMB_ROW1_RIGHT KC_CAPS, DE_CIRC,
-#define BONE_THUMB_ROW2_RIGHT KC_ENT,  KC_SPC, MO(RAISE), KC_BSPC, _______
+#define BONE_THUMB_ROW1_RIGHT MO(ADJUST), KC_CAPS,
+#define BONE_THUMB_ROW2_RIGHT KC_ENT,     KC_SPC, MO(RAISE), KC_BSPC, _______
 
 //// Raise
 #define RAISE_ROW1_LEFT DE_TILD, DE_EXLM, DE_AT,   DE_LCBR, DE_RCBR, DE_PIPE,
@@ -103,9 +151,25 @@ enum custom_keycodes {
 #define RAISE_THUMB_ROW1_RIGHT _______, _______,
 #define RAISE_THUMB_ROW2_RIGHT _______, _______, _______, KC_0, _______
 
+
+#define WIN_RAISE_ROW1_LEFT W_TILD, W_EXLM, W_AT,   W_LCBR, W_RCBR, W_PIPE,
+#define WIN_RAISE_ROW2_LEFT W_QUOT, W_HASH, W_DLR,  W_LPRN, W_RPRN, W_SLSH,
+#define WIN_RAISE_ROW3_LEFT W_DQUO, W_PERC, W_CIRC, W_LBRC, W_RBRC, W_GRV,
+
+#define WIN_RAISE_ROW1_RIGHT W_QUES, KC_7, KC_8, KC_9, W_ASTR, W_SCLN,
+#define WIN_RAISE_ROW2_RIGHT W_EQL,  KC_4, KC_5, KC_6, W_PLUS, W_COLN,
+#define WIN_RAISE_ROW3_RIGHT W_AMPR, KC_1, KC_2, KC_3, W_BSLS, W_CIRC,
+
+#define WIN_RAISE_THUMB_ROW1_LEFT RAISE_THUMB_ROW1_LEFT
+#define WIN_RAISE_THUMB_ROW2_LEFT RAISE_THUMB_ROW2_LEFT
+
+#define WIN_RAISE_THUMB_ROW1_RIGHT RAISE_THUMB_ROW1_RIGHT
+#define WIN_RAISE_THUMB_ROW2_RIGHT RAISE_THUMB_ROW2_RIGHT
+
+
 //// Lower
 #define LOWER_ROW1_LEFT _______, _______, _______, _______, _______, _______,
-#define LOWER_ROW2_LEFT _______, _______, _______, _______, _______, _______,
+#define LOWER_ROW2_LEFT _______, DE_ADIA, DE_ODIA, DE_UDIA, DE_SS,   _______,
 #define LOWER_ROW3_LEFT _______, _______, _______, _______, _______, _______,
 
 #define LOWER_ROW1_RIGHT _______, _______, KC_UP,   _______, _______, _______,
@@ -119,9 +183,9 @@ enum custom_keycodes {
 #define LOWER_THUMB_ROW2_RIGHT _______, _______, _______, _______, _______
 
 //// Adjust
-#define ADJUST_ROW1_LEFT _______, _______,  _______,    _______, _______, _______,
-#define ADJUST_ROW2_LEFT _______, TG(BONE), TG(DVORAK), _______, _______, _______,
-#define ADJUST_ROW3_LEFT _______, _______,  _______,    _______, _______, _______,
+#define ADJUST_ROW1_LEFT _______, TG(WIN_DVORAK), _______,    _______, _______, _______,
+#define ADJUST_ROW2_LEFT _______, TG(BONE),       TG(DVORAK), _______, _______, _______,
+#define ADJUST_ROW3_LEFT _______, _______,        _______,    _______, _______, _______,
 
 #define ADJUST_ROW1_RIGHT _______, _______, KC_UP,   _______, _______, _______,
 #define ADJUST_ROW2_RIGHT _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,

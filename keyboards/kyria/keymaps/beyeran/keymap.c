@@ -46,9 +46,11 @@
 
 /* Keymap definition of layers (array used by core) */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [DVORAK] = LAYOUT_wrapper(COMPOSE_LAYER(DVORAK)),
-    [BONE]   = LAYOUT_wrapper(COMPOSE_LAYER(BONE)),
-    [LOWER]  = LAYOUT_wrapper(COMPOSE_LAYER(LOWER)),
-    [RAISE]  = LAYOUT_wrapper(COMPOSE_LAYER(RAISE)),
-    [ADJUST] = LAYOUT_wrapper(COMPOSE_LAYER(ADJUST)),
+  [DVORAK]     = LAYOUT_wrapper(COMPOSE_LAYER(DVORAK)),
+  [BONE]       = LAYOUT_wrapper(COMPOSE_LAYER(BONE)),
+  [LOWER]      = LAYOUT_wrapper(COMPOSE_LAYER(LOWER)),
+  [RAISE]      = LAYOUT_wrapper(COMPOSE_LAYER(RAISE)),
+  [WIN_DVORAK] = LAYOUT_wrapper(COMPOSE_LAYER(WIN_DVORAK)),
+  [WIN_RAISE]  = LAYOUT_wrapper(COMPOSE_LAYER(WIN_RAISE)),
+  [ADJUST]     = LAYOUT_wrapper(COMPOSE_LAYER(ADJUST)),
 };

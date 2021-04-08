@@ -41,6 +41,12 @@ void render_status(void) {
     case DVORAK:
       oled_write_P(PSTR("Dvorak\n"), false);
       break;
+    case WIN_DVORAK:
+      oled_write_P(PSTR("WIN Dvorak\n"), false);
+      break;
+    case WIN_RAISE:
+      oled_write_P(PSTR("WIN Raise\n"), false);
+      break;
     case BONE:
       oled_write_P(PSTR("Bone\n"), false);
       break;
