@@ -40,7 +40,7 @@ enum custom_keycodes {
 #define W_PERC S(KC_5)
 #define W_CIRC KC_GRV
 #define W_LBRC ALGR(KC_8)
-#define W_RBRC ALGR(KC_9)
+#define W_RBRC ALGR(KC_0)
 #define W_GRV  S(KC_EQL)
 #define W_AMPR S(DE_6)
 #define W_BSLS ALGR(KC_MINUS)
@@ -168,8 +168,8 @@ enum custom_keycodes {
 
 
 //// Lower
-#define LOWER_ROW1_LEFT _______, _______, _______, _______, _______, _______,
-#define LOWER_ROW2_LEFT _______, DE_ADIA, DE_ODIA, DE_UDIA, DE_SS,   _______,
+#define LOWER_ROW1_LEFT W_CIRC,  W_LABK,  W_RABK,  DE_LABK, DE_RABK, DE_CIRC,
+#define LOWER_ROW2_LEFT KC_EQL,  DE_ADIA, DE_ODIA, DE_UDIA, DE_SS,   DE_ACUT,
 #define LOWER_ROW3_LEFT _______, _______, _______, _______, _______, _______,
 
 #define LOWER_ROW1_RIGHT _______, _______, KC_UP,   _______, _______, _______,
