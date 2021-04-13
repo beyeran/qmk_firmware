@@ -11,11 +11,6 @@
 #   define MAX(X, Y) ((X) > (Y) ? (X) : (Y))
 #endif
 
-
-oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-  return OLED_ROTATION_180;
-}
-
 void render_status(void) {
     oled_write_P(PSTR("Kyria rev1.3\n\n"), false);
 
@@ -33,6 +28,9 @@ void render_status(void) {
       break;
     case BONE:
       oled_write_P(PSTR("Bone\n"), false);
+      break;
+    case WIN_BONE:
+      oled_write_P(PSTR("WIN Bone\n"), false);
       break;
     case LOWER:
       oled_write_P(PSTR("Lower\n"), false);
@@ -58,101 +56,39 @@ void render_status(void) {
 #define NB_COLS (OLED_DISPLAY_WIDTH / CELL_SIZE)
 #define NB_MS_BY_PIXEL ((POMODORO_TIMER * 60L * 1000) / (8 * NB_ROWS * NB_COLS));
 
-/* Write a char of cells to OLED
-Similar function to the one in oled_gfx_game_life but as it is dependant to CELL_SIZE that may not be equals, need to be redefined
-*/
-static void write_char_cells_oled(const char value, const uint16_t i, const uint16_t j) {
-#if CELL_SIZE == 1
-    oled_write_raw_byte(value, i * OLED_DISPLAY_WIDTH + j);
-#elif CELL_SIZE <= 4
-    uint32_t val32 = 0;
-    for (int8_t b = 0; b < 8; b++) {
-        bool pix = 1 & (value >> b);
-        uint8_t pixVal = 0;
-        for (uint8_t size = 0; size < CELL_SIZE; size++) {
-            pixVal = pixVal << 1 | pix;
-        }
-        val32 = val32 << CELL_SIZE | pixVal;
-    }
-    for (uint8_t a = 0; a < CELL_SIZE; a++) {
-        for (uint8_t b = 0; b < CELL_SIZE; b++) {
-            oled_write_raw_byte(((char*)&val32)[a], (CELL_SIZE * i + a) * OLED_DISPLAY_WIDTH + CELL_SIZE * j + b);
-        }
-    }
-#else // CELL_SIZE value
-    #error Algorithm must be defined for defined CELL_SIZE value
-#endif // CELL_SIZE value
+// static bool previous_pomodoro_reint_state;
+
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+  return OLED_ROTATION_180;
 }
 
-uint32_t pomodoro_start_timer = 0;
+volatile uint16_t frame_timer = 0;
 
-/* Definition of the animation */
-typedef struct {
-  uint32_t start_timer;
-  uint16_t frame_duration;
-  int16_t  ratioPerc;
-} t_animation;
-
-
-void pomodoro_render_next_frame(t_animation* animation) {
-  animation->start_timer = timer_read32();
-
-  const uint32_t time_elapsed = timer_elapsed32(pomodoro_start_timer);
-  if (time_elapsed < POMODORO_TIMER * 60L * 1000) {
-    // Number of pixels to fill to represent the remaining time in pomodoro
-    int32_t nbPix = (POMODORO_TIMER * 60L * 1000 - time_elapsed) / NB_MS_BY_PIXEL;
-    const int32_t nbPixExpected = nbPix;
-    uint16_t i;
-    uint16_t j;
-    for (j = 0; j < NB_COLS && nbPix > 0; j++) {
-      for (i = 0; i < NB_ROWS && nbPix > 0; i++) {
-        char value = 0;
-        for (uint8_t b = 0; b < 8; b++) {
-          value |= (rand() % (8 * NB_ROWS * NB_COLS) < nbPixExpected) << b;
-        }
-        write_char_cells_oled(value, i, j);
-        for (int8_t b = 0; b < 8 ; b++) {
-          nbPix -= (1 & (value >> b));
-        }
-      }
-    }
-    for (; j < NB_COLS; j++) {
-      for (; i < NB_ROWS; i++) {
-        write_char_cells_oled(0, i, j);
-      }
-      i = 0;
-    }
-  }
+void reset_pomodoro(void) {
+  frame_timer = timer_read();
 }
 
-/* Display the pomodoro timer */
+void init_pomodoro(void) {
+  frame_timer = timer_read();
+}
+
 void render_pomodoro(void) {
-    oled_set_cursor(0, 7);
-    // Handle the toggle command
+  char pomodoro_str[15];
+  uint16_t time_s = timer_elapsed(frame_timer);
 
-    if (pomodoro_start_timer == 0) {
-      pomodoro_start_timer = timer_read32();
-    } else {
-      pomodoro_start_timer = 0;
-    }
+  sprintf(pomodoro_str, "Timer: %02u:%02u", time_s / 60, time_s % 60);
+  oled_write(pomodoro_str, false);
 
-    // A timer is running
-    if (pomodoro_start_timer != 0) {
-        const uint32_t time_s = MAX(0, (25 * 60) - (timer_elapsed32(pomodoro_start_timer) / 1000));
-        char pomodoro_str[6];
-        oled_write_P(PSTR("POMO "), time_s == 0); // 2
-        sprintf(pomodoro_str, "%02lu:%02lu", time_s / 60, time_s % 60);
-        oled_write(pomodoro_str, time_s == 0); // 5
-        if (time_s == 0) {
-            pomodoro_start_timer = 0;
-        }
-    }
+  if (time_s < 0 || time_s > (POMODORO_TIMER * 60L * 1000)) {
+    init_pomodoro();
+  }
 }
 
 void oled_task_user(void) {
   if (is_keyboard_master()) {
     render_status();
-    render_pomodoro();
+    oled_write_P(PSTR("\n"), false);
+    // render_pomodoro();
   } else {
     oled_write_P(PSTR("No logo to see.\n"), false);
   }

@@ -7,6 +7,7 @@ enum layers {
   DVORAK,
   WIN_DVORAK,
   BONE,
+  WIN_BONE,
   LOWER,
   RAISE,
   WIN_RAISE,
@@ -115,26 +116,42 @@ enum custom_keycodes {
 #define WIN_DVORAK_ROW3_RIGHT DVORAK_ROW3_RIGHT
 
 #define WIN_DVORAK_THUMB_ROW1_LEFT DE_UNDS, KC_CAPS,
-#define WIN_DVORAK_THUMB_ROW2_LEFT _______, KC_BSPC, MO(LOWER),  KC_ENT, KC_SPC,
+#define WIN_DVORAK_THUMB_ROW2_LEFT _______, KC_TAB, MO(LOWER),  KC_ENT, KC_SPC,
 
 #define WIN_DVORAK_THUMB_ROW1_RIGHT MO(ADJUST), KC_CAPS,
-#define WIN_DVORAK_THUMB_ROW2_RIGHT KC_BSPC,    KC_SPC,  MO(WIN_RAISE), KC_BSPC, _______
+#define WIN_DVORAK_THUMB_ROW2_RIGHT KC_BSPC,    KC_SPC,  MO(WIN_RAISE), KC_TAB, _______
 
 
 // Bone
-#define BONE_ROW1_LEFT APB_R11, DE_J,  DE_D,  DE_U,  DE_A,  DE_X,
-#define BONE_ROW2_LEFT APB_R21, GUI_C, ALTT2, SFT_I, CTL_E, DE_O,
-#define BONE_ROW3_LEFT APB_R31, DE_F,  DE_V,  DE_AE, DE_AE, DE_OE,
+#define BONE_ROW1_LEFT APB_R11, DE_J,  DE_D,  DE_U,    DE_A,    DE_X,
+#define BONE_ROW2_LEFT APB_R21, GUI_C, ALTT2, SFT_I,   CTL_E,   DE_O,
+#define BONE_ROW3_LEFT APB_R31, DE_F,  DE_V,  DE_ADIA, DE_UDIA, DE_ODIA,
 
 #define BONE_ROW1_RIGHT DE_P, DE_H,  DE_L,   DE_M,    DE_W,  APB_R1E,
 #define BONE_ROW2_RIGHT DE_B, CTL_N, SF2_R,  ALT_S,   GUI_G, DE_Q,
 #define BONE_ROW3_RIGHT DE_Y, DE_Z,  DE_DOT, DE_COMM, DE_K,  APB_R3E,
 
 #define BONE_THUMB_ROW1_LEFT DE_UNDS, KC_CAPS,
-#define BONE_THUMB_ROW2_LEFT _______, KC_BSPC, MO(LOWER),  KC_ENT, KC_SPC,
+#define BONE_THUMB_ROW2_LEFT _______, KC_TAB, MO(LOWER),  KC_ENT, KC_SPC,
 
 #define BONE_THUMB_ROW1_RIGHT MO(ADJUST), KC_CAPS,
-#define BONE_THUMB_ROW2_RIGHT KC_ENT,     KC_SPC, MO(RAISE), KC_BSPC, _______
+#define BONE_THUMB_ROW2_RIGHT KC_ENT,     KC_SPC, MO(RAISE), KC_TAB, _______
+
+// Bone
+#define WIN_BONE_ROW1_LEFT BONE_ROW1_LEFT
+#define WIN_BONE_ROW2_LEFT BONE_ROW2_LEFT
+#define WIN_BONE_ROW3_LEFT BONE_ROW3_LEFT
+
+#define WIN_BONE_ROW1_RIGHT BONE_ROW1_RIGHT
+#define WIN_BONE_ROW2_RIGHT BONE_ROW2_RIGHT
+#define WIN_BONE_ROW3_RIGHT BONE_ROW3_RIGHT
+
+#define WIN_BONE_THUMB_ROW1_LEFT BONE_THUMB_ROW1_LEFT
+#define WIN_BONE_THUMB_ROW2_LEFT BONE_THUMB_ROW2_LEFT
+
+#define WIN_BONE_THUMB_ROW1_RIGHT MO(ADJUST), KC_CAPS,
+#define WIN_BONE_THUMB_ROW2_RIGHT KC_ENT,     KC_SPC, MO(WIN_RAISE), KC_TAB, _______
+
 
 //// Raise
 #define RAISE_ROW1_LEFT DE_TILD, DE_EXLM, DE_AT,   DE_LCBR, DE_RCBR, DE_PIPE,
@@ -183,9 +200,9 @@ enum custom_keycodes {
 #define LOWER_THUMB_ROW2_RIGHT _______, _______, _______, _______, _______
 
 //// Adjust
-#define ADJUST_ROW1_LEFT _______, TG(WIN_DVORAK), _______,    _______, _______, _______,
-#define ADJUST_ROW2_LEFT _______, TG(BONE),       TG(DVORAK), _______, _______, _______,
-#define ADJUST_ROW3_LEFT _______, _______,        _______,    _______, _______, _______,
+#define ADJUST_ROW1_LEFT _______, TG(WIN_BONE), TG(WIN_DVORAK), _______, _______, POMODORO_TOGGLE,
+#define ADJUST_ROW2_LEFT _______, TG(BONE),     TG(DVORAK),     _______, _______, _______,
+#define ADJUST_ROW3_LEFT _______, _______,      _______,        _______, _______, _______,
 
 #define ADJUST_ROW1_RIGHT _______, _______, KC_UP,   _______, _______, _______,
 #define ADJUST_ROW2_RIGHT _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
