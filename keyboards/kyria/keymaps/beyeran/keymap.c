@@ -18,6 +18,7 @@
 
 #ifdef OLED_DRIVER_ENABLE
 #include "oled.h"
+#include "pomodoro.h"
 #endif
 #ifdef ENCODER_ENABLE
 #include "encoder.h"
@@ -56,11 +57,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [ADJUST]     = LAYOUT_wrapper(COMPOSE_LAYER(ADJUST)),
 };
 
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
   case POMODORO_TOGGLE:
-    init_pomodoro();
+    set_pomodoro_time(0, 0);
     return false;
     break;
   }

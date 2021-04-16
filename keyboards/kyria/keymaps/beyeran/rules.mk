@@ -1,4 +1,5 @@
 SRC += encoder.c \
+	pomodoro.c \
 	oled.c
 
 OLED_DRIVER_ENABLE = yes   # Enables the use of OLED displays

@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include "keymap.h"
 #include "oled.h"
+#include "pomodoro.h"
 
 #ifndef MIN
 #   define MIN(X, Y) ((X) < (Y) ? (X) : (Y))
@@ -50,45 +51,30 @@ void render_status(void) {
     oled_write_P(IS_LED_ON(led_usb_state, USB_LED_CAPS_LOCK) ? PSTR("CAPLCK ") : PSTR("       "), false);
 }
 
-#define POMODORO_TIMER 25
-#define CELL_SIZE 3
-#define NB_ROWS (OLED_DISPLAY_HEIGHT / 8 / CELL_SIZE)
-#define NB_COLS (OLED_DISPLAY_WIDTH / CELL_SIZE)
-#define NB_MS_BY_PIXEL ((POMODORO_TIMER * 60L * 1000) / (8 * NB_ROWS * NB_COLS));
+void render_pomodoro(void) {
+  char pomodoro_str[15];
 
-// static bool previous_pomodoro_reint_state;
+  sprintf(pomodoro_str, "Timer: %02u:%02u", get_pomodoro_minutes(), get_pomodoro_seconds());
+
+  if (get_pomodoro_minutes() >= 25) {
+    sprintf(pomodoro_str, "Done!");
+    oled_write(pomodoro_str, false);
+    return;
+  }
+
+  oled_write(pomodoro_str, false);
+  update_pomodoro_time();
+}
 
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   return OLED_ROTATION_180;
-}
-
-volatile uint16_t frame_timer = 0;
-
-void reset_pomodoro(void) {
-  frame_timer = timer_read();
-}
-
-void init_pomodoro(void) {
-  frame_timer = timer_read();
-}
-
-void render_pomodoro(void) {
-  char pomodoro_str[15];
-  uint16_t time_s = timer_elapsed(frame_timer);
-
-  sprintf(pomodoro_str, "Timer: %02u:%02u", time_s / 60, time_s % 60);
-  oled_write(pomodoro_str, false);
-
-  if (time_s < 0 || time_s > (POMODORO_TIMER * 60L * 1000)) {
-    init_pomodoro();
-  }
 }
 
 void oled_task_user(void) {
   if (is_keyboard_master()) {
     render_status();
     oled_write_P(PSTR("\n"), false);
-    // render_pomodoro();
+    render_pomodoro();
   } else {
     oled_write_P(PSTR("No logo to see.\n"), false);
   }
