@@ -54,7 +54,10 @@ void render_status(void) {
 void render_pomodoro(void) {
   char pomodoro_str[15];
 
-  sprintf(pomodoro_str, "Timer: %02u:%02u", get_pomodoro_minutes(), get_pomodoro_seconds());
+  sprintf(pomodoro_str,
+          "Timer: %02u:%02u",
+          get_pomodoro_minutes(),
+          get_pomodoro_seconds());
 
   if (get_pomodoro_minutes() >= 25) {
     sprintf(pomodoro_str, "Done!");

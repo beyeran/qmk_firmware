@@ -154,20 +154,19 @@ enum custom_keycodes {
 
 
 //// Raise
-#define RAISE_ROW1_LEFT DE_TILD, DE_EXLM, DE_AT,   DE_LCBR, DE_RCBR, DE_PIPE,
-#define RAISE_ROW2_LEFT DE_QUOT, DE_HASH, DE_DLR,  DE_LPRN, DE_RPRN, DE_SLSH,
-#define RAISE_ROW3_LEFT DE_DQUO, DE_PERC, DE_CIRC, DE_LBRC, DE_RBRC, DE_GRV,
+#define RAISE_ROW1_LEFT XXXXXXX, DE_ACUT, DE_UNDS, DE_LBRC, DE_RBRC, DE_LABK,
+#define RAISE_ROW2_LEFT XXXXXXX, DE_BSLS, DE_SLSH, DE_LCBR, DE_RCBR, DE_ASTR,
+#define RAISE_ROW3_LEFT XXXXXXX, DE_HASH, DE_DLR,  DE_PIPE, DE_TILD, DE_GRV,
 
-#define RAISE_ROW1_RIGHT DE_QUES, KC_7, KC_8, KC_9, DE_ASTR, DE_SCLN,
-#define RAISE_ROW2_RIGHT DE_EQL,  KC_4, KC_5, KC_6, DE_PLUS, DE_COLN,
-#define RAISE_ROW3_RIGHT DE_AMPR, KC_1, KC_2, KC_3, DE_BSLS, DE_CIRC,
+#define RAISE_ROW1_RIGHT DE_EXLM, DE_CIRC, S(DE_CIRC), DE_EQL,  DE_AMPR, XXXXXXX,
+#define RAISE_ROW2_RIGHT DE_QUES, DE_LPRN, DE_RPRN,    DE_MINS, DE_COLN, DE_AT,
+#define RAISE_ROW3_RIGHT DE_PLUS, DE_PERC, DE_DQUO,    DE_QUOT, DE_SCLN, XXXXXXX,
 
 #define RAISE_THUMB_ROW1_LEFT _______, _______,
 #define RAISE_THUMB_ROW2_LEFT _______, _______, _______, _______, _______,
 
 #define RAISE_THUMB_ROW1_RIGHT _______, _______,
-#define RAISE_THUMB_ROW2_RIGHT _______, _______, _______, KC_0, _______
-
+#define RAISE_THUMB_ROW2_RIGHT _______, _______, _______, _______, _______
 
 #define WIN_RAISE_ROW1_LEFT W_TILD, W_EXLM, W_AT,   W_LCBR, W_RCBR, W_PIPE,
 #define WIN_RAISE_ROW2_LEFT W_QUOT, W_HASH, W_DLR,  W_LPRN, W_RPRN, W_SLSH,
@@ -185,16 +184,16 @@ enum custom_keycodes {
 
 
 //// Lower
-#define LOWER_ROW1_LEFT W_CIRC,  W_LABK,  W_RABK,  DE_LABK, DE_RABK, DE_CIRC,
-#define LOWER_ROW2_LEFT KC_EQL,  DE_ADIA, DE_ODIA, DE_UDIA, DE_SS,   DE_ACUT,
-#define LOWER_ROW3_LEFT _______, _______, _______, _______, _______, _______,
+#define LOWER_ROW1_LEFT _______, _______, DE_7, DE_8, DE_9, _______,
+#define LOWER_ROW2_LEFT _______, _______, DE_4, DE_5, DE_6, _______,
+#define LOWER_ROW3_LEFT _______, _______, DE_1, DE_2, DE_3, _______,
 
 #define LOWER_ROW1_RIGHT _______, _______, KC_UP,   _______, _______, _______,
 #define LOWER_ROW2_RIGHT _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
 #define LOWER_ROW3_RIGHT _______, _______, _______, _______, _______, _______,
 
 #define LOWER_THUMB_ROW1_LEFT _______, _______,
-#define LOWER_THUMB_ROW2_LEFT _______, _______, _______, _______, _______,
+#define LOWER_THUMB_ROW2_LEFT DE_0,    _______, _______, _______, _______,
 
 #define LOWER_THUMB_ROW1_RIGHT _______, _______,
 #define LOWER_THUMB_ROW2_RIGHT _______, _______, _______, _______, _______
