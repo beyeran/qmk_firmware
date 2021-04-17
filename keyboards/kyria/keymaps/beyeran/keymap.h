@@ -193,7 +193,7 @@ enum custom_keycodes {
 #define LOWER_ROW3_RIGHT _______, _______, _______, _______, _______, _______,
 
 #define LOWER_THUMB_ROW1_LEFT _______, _______,
-#define LOWER_THUMB_ROW2_LEFT DE_0,    _______, _______, _______, _______,
+#define LOWER_THUMB_ROW2_LEFT _______, DE_0,    _______, _______, _______,
 
 #define LOWER_THUMB_ROW1_RIGHT _______, _______,
 #define LOWER_THUMB_ROW2_RIGHT _______, _______, _______, _______, _______
