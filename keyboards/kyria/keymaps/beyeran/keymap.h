@@ -131,7 +131,7 @@ enum custom_keycodes {
 
 #define BONE_ROW1_RIGHT DE_P, DE_H,  DE_L,   DE_M,    DE_W,  APB_R1E,
 #define BONE_ROW2_RIGHT DE_B, CTL_N, SF2_R,  ALT_S,   GUI_G, DE_Q,
-#define BONE_ROW3_RIGHT DE_Y, DE_Z,  DE_DOT, DE_COMM, DE_K,  APB_R3E,
+#define BONE_ROW3_RIGHT DE_Y, DE_Z,  DE_COMM, DE_DOT, DE_K,  APB_R3E,
 
 #define BONE_THUMB_ROW1_LEFT DE_UNDS, KC_CAPS,
 #define BONE_THUMB_ROW2_LEFT _______, KC_TAB, MO(LOWER),  KC_ENT, KC_SPC,
