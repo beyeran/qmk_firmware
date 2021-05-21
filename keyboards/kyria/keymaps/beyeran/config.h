@@ -18,8 +18,6 @@
 
 #ifdef OLED_DRIVER_ENABLE
   #define OLED_DISPLAY_128X64
-
-  #define POMODORO_TIMER 25
 #endif
 
 #ifdef RGBLIGHT_ENABLE
@@ -33,7 +31,7 @@
 // If you are using an Elite C rev3 on the slave side, uncomment the lines below:
 // #define SPLIT_USB_DETECT
 // #define NO_USB_STARTUP_CHECK
-
+#define MASTER_LEFT
 
 // Adding home row modifiers
 #define TAPPING_TERM 300

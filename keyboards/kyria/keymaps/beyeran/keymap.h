@@ -14,10 +14,6 @@ enum layers {
   ADJUST
 };
 
-enum custom_keycodes {
-  POMODORO_TOGGLE = SAFE_RANGE
-};
-
 // "Localization" for win
 #define W_TILD ALGR(KC_RBRC)
 #define W_EXLM S(KC_1)
@@ -134,10 +130,10 @@ enum custom_keycodes {
 #define BONE_ROW3_RIGHT DE_Y, DE_Z,  DE_COMM, DE_DOT, DE_K,  APB_R3E,
 
 #define BONE_THUMB_ROW1_LEFT DE_UNDS, KC_CAPS,
-#define BONE_THUMB_ROW2_LEFT _______, KC_TAB, MO(LOWER),  KC_ENT, KC_SPC,
+#define BONE_THUMB_ROW2_LEFT _______, KC_ENT, MO(LOWER),  KC_ENT, KC_TAB,
 
 #define BONE_THUMB_ROW1_RIGHT MO(ADJUST), KC_CAPS,
-#define BONE_THUMB_ROW2_RIGHT KC_ENT,     KC_SPC, MO(RAISE), KC_TAB, _______
+#define BONE_THUMB_ROW2_RIGHT KC_TAB,     KC_SPC, MO(RAISE), KC_ENT, _______
 
 // Bone
 #define WIN_BONE_ROW1_LEFT BONE_ROW1_LEFT
@@ -152,7 +148,7 @@ enum custom_keycodes {
 #define WIN_BONE_THUMB_ROW2_LEFT BONE_THUMB_ROW2_LEFT
 
 #define WIN_BONE_THUMB_ROW1_RIGHT MO(ADJUST), KC_CAPS,
-#define WIN_BONE_THUMB_ROW2_RIGHT KC_ENT,     KC_SPC, MO(WIN_RAISE), KC_TAB, _______
+#define WIN_BONE_THUMB_ROW2_RIGHT KC_TAB,     KC_SPC, MO(WIN_RAISE), KC_ENT, _______
 
 
 //// Raise
@@ -202,13 +198,13 @@ enum custom_keycodes {
 #define LOWER_THUMB_ROW2_RIGHT _______, _______, _______, _______, _______
 
 //// Adjust
-#define ADJUST_ROW1_LEFT _______, TG(WIN_BONE), TG(WIN_DVORAK), _______, _______, POMODORO_TOGGLE,
+#define ADJUST_ROW1_LEFT _______, TG(WIN_BONE), TG(WIN_DVORAK), _______, _______, _______,
 #define ADJUST_ROW2_LEFT _______, TG(BONE),     TG(DVORAK),     _______, _______, _______,
 #define ADJUST_ROW3_LEFT _______, _______,      _______,        _______, _______, _______,
 
-#define ADJUST_ROW1_RIGHT _______, _______, KC_UP,   _______, _______, _______,
-#define ADJUST_ROW2_RIGHT _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
-#define ADJUST_ROW3_RIGHT _______, _______, _______, _______, _______, _______,
+#define ADJUST_ROW1_RIGHT _______, _______, KC_UP,   _______, _______, RGB_TOG,
+#define ADJUST_ROW2_RIGHT _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, RGB_MOD,
+#define ADJUST_ROW3_RIGHT _______, _______, _______, _______, _______, RGB_RMOD,
 
 #define ADJUST_THUMB_ROW1_LEFT _______, _______,
 #define ADJUST_THUMB_ROW2_LEFT _______, _______, _______, _______, _______,

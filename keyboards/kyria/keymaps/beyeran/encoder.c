@@ -1,24 +1,19 @@
+#include <stdbool.h>
+
 #include QMK_KEYBOARD_H
 
-#include "encoder.h"
-
-#ifdef ENCODER_ENABLE
 void encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == 0) {
-        // Volume control
-        if (clockwise) {
-          tap_code(KC_VOLU);
-        } else {
-          tap_code(KC_VOLD);
-        }
+  if (index == 0) {
+    if (clockwise) {
+      tap_code(KC_PGDN);
+    } else {
+      tap_code(KC_PGUP);
     }
-    else if (index == 1) {
-        // Page up/Page down
-        if (clockwise) {
-          tap_code(KC_DOWN);
-        } else {
-          tap_code(KC_UP);
-        }
+  } else if (index == 1) {
+    if (clockwise) {
+      tap_code16(C(KC_TAB));
+    } else {
+      tap_code16(S(C(KC_TAB)));
     }
+  }
 }
-#endif
