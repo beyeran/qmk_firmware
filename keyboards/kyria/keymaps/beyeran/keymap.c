@@ -20,6 +20,9 @@
 #include "oled.h"
 #endif
 
+#ifdef ENCODER_ENABLE
+#include "rotary_encoder.h"
+#endif
 
 //------------------------------
 // Helpers to construct layouts

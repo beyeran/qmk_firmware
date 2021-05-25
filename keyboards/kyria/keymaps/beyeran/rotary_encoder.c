@@ -1,6 +1,8 @@
+#include QMK_KEYBOARD_H
+
+#include "rotary_encoder.h"
 #include <stdbool.h>
 
-#include QMK_KEYBOARD_H
 
 void encoder_update_user(uint8_t index, bool clockwise) {
   if (index == 0) {
