@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include "keymap.h"
 #include "oled.h"
+#include "logo.h"
 
 #ifndef MIN
 #   define MIN(X, Y) ((X) < (Y) ? (X) : (Y))
@@ -17,11 +18,8 @@ void render_status(void) {
     // Host Keyboard Layer Status
     oled_write_P(PSTR("Layer: "), false);
     switch (get_highest_layer(layer_state)) {
-    case DVORAK:
-      oled_write_P(PSTR("Dvorak\n"), false);
-      break;
-    case WIN_DVORAK:
-      oled_write_P(PSTR("WIN Dvorak\n"), false);
+    case NEO2:
+      oled_write_P(PSTR("NEO2\n"), false);
       break;
     case WIN_RAISE:
       oled_write_P(PSTR("WIN Raise\n"), false);
@@ -59,6 +57,6 @@ void oled_task_user(void) {
     render_status();
     oled_write_P(PSTR("\n"), false);
   } else {
-    oled_write_P(PSTR("Up and running.\n"), false);
+    render_logo();
   }
 }

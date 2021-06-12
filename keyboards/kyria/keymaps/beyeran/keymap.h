@@ -4,13 +4,12 @@
 #include "keymap_german_osx.h"
 
 enum layers {
-  DVORAK,
-  WIN_DVORAK,
   BONE,
   WIN_BONE,
   LOWER,
   RAISE,
   WIN_RAISE,
+  NEO2,
   ADJUST
 };
 
@@ -50,14 +49,17 @@ enum layers {
 // Home row modifier setup
 #define GUI_A LGUI_T(DE_A)
 #define GUI_C LGUI_T(DE_C)
+#define GUI_U LGUI_T(DE_U)
 
 #define ALT_S LALT_T(DE_S)
 #define ALT_O LALT_T(DE_O)
 #define ALTT2 LALT_T(DE_T)
+#define ALT_I LALT_T(DE_I)
 
 #define SFT_D LSFT_T(DE_D)
 #define SFT_E LSFT_T(DE_E)
 #define SFT_I LSFT_T(DE_I)
+#define SFT_A LSFT_T(DE_A)
 
 #define CTL_F LCTL_T(DE_F)
 #define CTL_U LCTL_T(DE_U)
@@ -74,11 +76,12 @@ enum layers {
 #define ALT_L LALT_T(DE_L)
 #define ALT_N LALT_T(DE_N)
 #define ALT_S LALT_T(DE_S)
+#define ALTT3 LALT_T(DE_T)
 
 #define GUI_OE RGUI_T(DE_OE)
 #define GUI_S  RGUI_T(DE_S)
 #define GUI_G  RGUI_T(DE_G)
-
+#define GUI_D  RGUI_T(DE_D)
 
 //// Universal Parts
 #define APB_R11 KC_ESC
@@ -89,35 +92,20 @@ enum layers {
 
 
 //// Alphas
-// Dvorak
-#define DVORAK_ROW1_LEFT APB_R11, DE_AE, DE_COMM, DE_DOT, DE_P,  DE_Y,
-#define DVORAK_ROW2_LEFT APB_R21, GUI_A, ALT_O,   SFT_E,  CTL_U, DE_I,
-#define DVORAK_ROW3_LEFT APB_R31, DE_OE, DE_Q,    DE_J,   DE_K,  DE_X,
+// NEO2
+#define NEO2_ROW1_LEFT APB_R11, DE_X,    DE_V,    DE_L,  DE_C,  DE_W,
+#define NEO2_ROW2_LEFT APB_R21, GUI_U,   ALT_I,   SFT_A, CTL_E, DE_O,
+#define NEO2_ROW3_LEFT DE_UDIA, DE_ODIA, DE_ADIA, DE_P,  DE_Z,  DE_B,
 
-#define DVORAK_ROW1_RIGHT DE_F, DE_G,  DE_C,   DE_R,  DE_L, APB_R1E,
-#define DVORAK_ROW2_RIGHT DE_D, CTL_H, SF2_T, ALT_N, GUI_S, KC_TAB,
-#define DVORAK_ROW3_RIGHT DE_B, DE_M,  DE_W,   DE_V,  DE_Z, APB_R3E,
+#define NEO2_ROW1_RIGHT DE_K, DE_H,  DE_G,    DE_F,   DE_Q,  APB_R1E,
+#define NEO2_ROW2_RIGHT DE_S, CTL_N, SF2_R,   ALTT3,  GUI_D, DE_Y,
+#define NEO2_ROW3_RIGHT DE_B, DE_M,  DE_COMM, DE_DOT, DE_J,  APB_R3E,
 
-#define DVORAK_THUMB_ROW1_LEFT DE_UNDS, KC_CAPS,
-#define DVORAK_THUMB_ROW2_LEFT _______, KC_BSPC, MO(LOWER),  KC_ENT, KC_SPC,
+#define NEO2_THUMB_ROW1_LEFT DE_UNDS, KC_CAPS,
+#define NEO2_THUMB_ROW2_LEFT XXXXXXX, KC_ENT, MO(LOWER),  KC_ENT, KC_TAB,
 
-#define DVORAK_THUMB_ROW1_RIGHT MO(ADJUST), KC_CAPS,
-#define DVORAK_THUMB_ROW2_RIGHT KC_BSPC,    KC_SPC,  MO(RAISE), KC_BSPC, _______
-
-
-#define WIN_DVORAK_ROW1_LEFT DVORAK_ROW1_LEFT
-#define WIN_DVORAK_ROW2_LEFT DVORAK_ROW2_LEFT
-#define WIN_DVORAK_ROW3_LEFT DVORAK_ROW3_LEFT
-
-#define WIN_DVORAK_ROW1_RIGHT DVORAK_ROW1_RIGHT
-#define WIN_DVORAK_ROW2_RIGHT DVORAK_ROW2_RIGHT
-#define WIN_DVORAK_ROW3_RIGHT DVORAK_ROW3_RIGHT
-
-#define WIN_DVORAK_THUMB_ROW1_LEFT DE_UNDS, KC_CAPS,
-#define WIN_DVORAK_THUMB_ROW2_LEFT _______, KC_TAB, MO(LOWER),  KC_ENT, KC_SPC,
-
-#define WIN_DVORAK_THUMB_ROW1_RIGHT MO(ADJUST), KC_CAPS,
-#define WIN_DVORAK_THUMB_ROW2_RIGHT KC_BSPC,    KC_SPC,  MO(WIN_RAISE), KC_TAB, _______
+#define NEO2_THUMB_ROW1_RIGHT MO(ADJUST), KC_CAPS,
+#define NEO2_THUMB_ROW2_RIGHT KC_TAB,     KC_SPC, MO(RAISE), KC_ENT, XXXXXXX
 
 
 // Bone
@@ -130,10 +118,10 @@ enum layers {
 #define BONE_ROW3_RIGHT DE_Y, DE_Z,  DE_COMM, DE_DOT, DE_K,  APB_R3E,
 
 #define BONE_THUMB_ROW1_LEFT DE_UNDS, KC_CAPS,
-#define BONE_THUMB_ROW2_LEFT _______, KC_ENT, MO(LOWER),  KC_ENT, KC_TAB,
+#define BONE_THUMB_ROW2_LEFT XXXXXXX, KC_ENT, MO(LOWER),  KC_ENT, KC_TAB,
 
 #define BONE_THUMB_ROW1_RIGHT MO(ADJUST), KC_CAPS,
-#define BONE_THUMB_ROW2_RIGHT KC_TAB,     KC_SPC, MO(RAISE), KC_ENT, _______
+#define BONE_THUMB_ROW2_RIGHT KC_TAB,     KC_SPC, MO(RAISE), KC_ENT, XXXXXXX
 
 // Bone
 #define WIN_BONE_ROW1_LEFT BONE_ROW1_LEFT
@@ -148,7 +136,7 @@ enum layers {
 #define WIN_BONE_THUMB_ROW2_LEFT BONE_THUMB_ROW2_LEFT
 
 #define WIN_BONE_THUMB_ROW1_RIGHT MO(ADJUST), KC_CAPS,
-#define WIN_BONE_THUMB_ROW2_RIGHT KC_TAB,     KC_SPC, MO(WIN_RAISE), KC_ENT, _______
+#define WIN_BONE_THUMB_ROW2_RIGHT KC_TAB,     KC_SPC, MO(WIN_RAISE), KC_ENT, XXXXXXX
 
 
 //// Raise
@@ -160,11 +148,11 @@ enum layers {
 #define RAISE_ROW2_RIGHT DE_QUES, DE_LPRN, DE_RPRN,    DE_MINS, DE_COLN, DE_AT,
 #define RAISE_ROW3_RIGHT DE_PLUS, DE_PERC, DE_DQUO,    DE_QUOT, DE_SCLN, XXXXXXX,
 
-#define RAISE_THUMB_ROW1_LEFT _______, _______,
-#define RAISE_THUMB_ROW2_LEFT _______, _______, _______, _______, _______,
+#define RAISE_THUMB_ROW1_LEFT XXXXXXX, XXXXXXX,
+#define RAISE_THUMB_ROW2_LEFT XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 
-#define RAISE_THUMB_ROW1_RIGHT _______, _______,
-#define RAISE_THUMB_ROW2_RIGHT _______, _______, _______, _______, _______
+#define RAISE_THUMB_ROW1_RIGHT XXXXXXX, XXXXXXX,
+#define RAISE_THUMB_ROW2_RIGHT XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 
 
 #define WIN_RAISE_ROW1_LEFT XXXXXXX, W_ACUT, W_UNDS, W_LBRC, W_RBRC, W_LABK,
@@ -183,31 +171,31 @@ enum layers {
 
 
 //// Lower
-#define LOWER_ROW1_LEFT _______, _______, DE_7, DE_8, DE_9, _______,
-#define LOWER_ROW2_LEFT _______, _______, DE_4, DE_5, DE_6, _______,
-#define LOWER_ROW3_LEFT _______, _______, DE_1, DE_2, DE_3, _______,
+#define LOWER_ROW1_LEFT XXXXXXX, XXXXXXX, DE_7, DE_8, DE_9, XXXXXXX,
+#define LOWER_ROW2_LEFT XXXXXXX, XXXXXXX, DE_4, DE_5, DE_6, XXXXXXX,
+#define LOWER_ROW3_LEFT XXXXXXX, XXXXXXX, DE_1, DE_2, DE_3, XXXXXXX,
 
-#define LOWER_ROW1_RIGHT _______, _______, KC_UP,   _______, _______, _______,
-#define LOWER_ROW2_RIGHT _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
-#define LOWER_ROW3_RIGHT _______, _______, _______, _______, _______, _______,
+#define LOWER_ROW1_RIGHT XXXXXXX, XXXXXXX, KC_UP,   XXXXXXX, XXXXXXX, DE_SS,
+#define LOWER_ROW2_RIGHT XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX,
+#define LOWER_ROW3_RIGHT XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 
-#define LOWER_THUMB_ROW1_LEFT _______, _______,
-#define LOWER_THUMB_ROW2_LEFT _______, DE_0,    _______, _______, _______,
+#define LOWER_THUMB_ROW1_LEFT XXXXXXX, XXXXXXX,
+#define LOWER_THUMB_ROW2_LEFT XXXXXXX, DE_0,    XXXXXXX, XXXXXXX, XXXXXXX,
 
-#define LOWER_THUMB_ROW1_RIGHT _______, _______,
-#define LOWER_THUMB_ROW2_RIGHT _______, _______, _______, _______, _______
+#define LOWER_THUMB_ROW1_RIGHT XXXXXXX, XXXXXXX,
+#define LOWER_THUMB_ROW2_RIGHT XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 
 //// Adjust
-#define ADJUST_ROW1_LEFT _______, TG(WIN_BONE), TG(WIN_DVORAK), _______, _______, _______,
-#define ADJUST_ROW2_LEFT _______, TG(BONE),     TG(DVORAK),     _______, _______, _______,
-#define ADJUST_ROW3_LEFT _______, _______,      _______,        _______, _______, _______,
+#define ADJUST_ROW1_LEFT XXXXXXX, TG(WIN_BONE), XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX,
+#define ADJUST_ROW2_LEFT XXXXXXX, TG(BONE),     TG(NEO2), XXXXXXX, XXXXXXX, XXXXXXX,
+#define ADJUST_ROW3_LEFT XXXXXXX, XXXXXXX,      XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX,
 
-#define ADJUST_ROW1_RIGHT _______, _______, KC_UP,   _______, _______, RGB_TOG,
-#define ADJUST_ROW2_RIGHT _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, RGB_MOD,
-#define ADJUST_ROW3_RIGHT _______, _______, _______, _______, _______, RGB_RMOD,
+#define ADJUST_ROW1_RIGHT XXXXXXX, XXXXXXX, KC_UP,   XXXXXXX, XXXXXXX, RGB_TOG,
+#define ADJUST_ROW2_RIGHT XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, RGB_MOD,
+#define ADJUST_ROW3_RIGHT XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RGB_RMOD,
 
-#define ADJUST_THUMB_ROW1_LEFT _______, _______,
-#define ADJUST_THUMB_ROW2_LEFT _______, _______, _______, _______, _______,
+#define ADJUST_THUMB_ROW1_LEFT XXXXXXX, XXXXXXX,
+#define ADJUST_THUMB_ROW2_LEFT XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
 
-#define ADJUST_THUMB_ROW1_RIGHT _______, _______,
-#define ADJUST_THUMB_ROW2_RIGHT _______, _______, _______, _______, _______
+#define ADJUST_THUMB_ROW1_RIGHT XXXXXXX, XXXXXXX,
+#define ADJUST_THUMB_ROW2_RIGHT XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
