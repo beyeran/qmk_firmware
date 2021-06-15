@@ -21,6 +21,9 @@ void render_status(void) {
     case NEO2:
       oled_write_P(PSTR("NEO2\n"), false);
       break;
+    case STANNI:
+      oled_write_P(PSTR("Standard\n"), false);
+      break;
     case WIN_RAISE:
       oled_write_P(PSTR("WIN Raise\n"), false);
       break;
