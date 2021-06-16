@@ -27,7 +27,7 @@
 
 
 #define ___BNE_BORDER_R1___ XXXXXXX
-#define ___BNE_BORDER_R2___ XXXXXXX
+#define ___BNE_BORDER_R2___ DE_Q
 #define ___BNE_BORDER_R3___ XXXXXXX
 #define ___BNE_BORDER_L1___ XXXXXXX
 #define ___BNE_BORDER_L2___ XXXXXXX
@@ -72,10 +72,10 @@
  * Bone thumbs
  */
 #define ___BNE_THMB_L1___ DE_UNDS, KC_CAPS
-#define ___BNE_THMB_L2___ XXXXXXX, KC_ENT, MO(LOWER),  KC_ENT, KC_TAB
+#define ___BNE_THMB_L2___ KC_ENT,  KC_TAB, MO(LOWER),  KC_SPC, KC_ESC
 
 #define ___BNE_THMB_R1___ MO(ADJUST), KC_CAPS
-#define ___BNE_THMB_R2___ KC_TAB,     KC_SPC, MO(RAISE), KC_ENT, XXXXXXX
+#define ___BNE_THMB_R2___ KC_ENT,     KC_BSPC, MO(RAISE), KC_TAB, KC_TAB
 
 
 /*

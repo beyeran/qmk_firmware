@@ -106,8 +106,8 @@ enum layers {
 #define ___ADJUST_L2___ TG(BNE), TG(NEO), XXXXXXX, XXXXXXX, XXXXXXX
 #define ___ADJUST_L3___ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 
-#define ___ADJUST_R1___ XXXXXXX,  XXXXXXX, KC_UP,   XXXXXXX, XXXXXXX
-#define ___ADJUST_R2___ XXXXXXX,  KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX
+#define ___ADJUST_R1___ RGB_TOG, XXXXXXX, KC_UP,   XXXXXXX, XXXXXXX
+#define ___ADJUST_R2___ XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX
 #define ___ADJUST_R3___ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 
 
@@ -159,5 +159,5 @@ enum layers {
 #define ___BNE_L3___ DE_F,       DE_V,       DE_ADIA,    DE_UDIA,    DE_ODIA
 
 #define ___BNE_R1___ DE_P, DE_H,       DE_L,       DE_M,       DE_W
-#define ___BNE_R2___ DE_B, BONE_R_CTL, BONE_L_SFT, BONE_L_ALT, BONE_L_GUI
+#define ___BNE_R2___ DE_B, BONE_R_CTL, BONE_R_SFT, BONE_R_ALT, BONE_R_GUI
 #define ___BNE_R3___ DE_Y, DE_Z,       DE_COMM,    DE_DOT,     DE_K
