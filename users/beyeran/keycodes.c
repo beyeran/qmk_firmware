@@ -1,4 +1,4 @@
-/* Copyright 2021 A.P.B. <mail@beyeran.site>
+/* Copyright 2021 A.P.B <mail@beyeran.site>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -13,27 +13,4 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-#pragma once
-
-#ifdef OLED_DRIVER_ENABLE
-  #define OLED_DISPLAY_128X64
-#endif
-
-// If you are using an Elite C rev3 on the slave side, uncomment the lines below:
-// #define SPLIT_USB_DETECT
-// #define NO_USB_STARTUP_CHECK
-#define MASTER_LEFT
-
-#ifdef RGBLIGHT_ENABLE
-  #define RGBLIGHT_EFFECT_BREATHING
-  #define RGBLIGHT_HUE_STEP 8
-  #define RGBLIGHT_SAT_STEP 8
-  #define RGBLIGHT_VAL_STEP 8
-  #define RGBLIGHT_SLEEP
-  #define RGBLIGHT_LIMIT_VAL 128
-  #define RGBLIGHT_EFFECT_BREATHE_MAX 128
-  #define RGBLIGHT_LAYERS
-  #define RGBLIGHT_MAX_LAYERS 16
-#endif
-
+#include "keycodes.h"

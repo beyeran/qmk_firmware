@@ -1,4 +1,4 @@
-/* Copyright 2019 Thomas Baart <thomas@splitkb.com>
+/* Copyright 2021 A.P.B. <mail@beyeran.site>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,34 +24,25 @@
 #include "rotary_encoder.h"
 #endif
 
-//------------------------------
-// Helpers to construct layouts
-//------------------------------
-#define CONCATE(id, name) id ## name
+#include "keycodes.h"
 
-/* Assemble all the #define of a layer definition */
-#define COMPOSE_LAYER(id) \
-    CONCATE(id, _ROW1_LEFT) CONCATE(id, _ROW1_RIGHT) \
-    CONCATE(id, _ROW2_LEFT) CONCATE(id, _ROW2_RIGHT) \
-    CONCATE(id, _ROW3_LEFT) CONCATE(id, _THUMB_ROW1_LEFT) CONCATE(id, _THUMB_ROW1_RIGHT) CONCATE(id, _ROW3_RIGHT) \
-    CONCATE(id, _THUMB_ROW2_LEFT) CONCATE(id, _THUMB_ROW2_RIGHT)
+
+#define CONCAT(id, name) ___ ## id ## _ ## name ## ___
+
+#define COMPOSE_LAYER(id)                                               \
+    CONCAT(id, BORDER_L1), CONCAT(id, L1),                                           CONCAT(id, R1), CONCAT(id, BORDER_R1), \
+    CONCAT(id, BORDER_L2), CONCAT(id, L2),                                           CONCAT(id, R2), CONCAT(id, BORDER_R2), \
+    CONCAT(id, BORDER_L3), CONCAT(id, L3), CONCAT(id, THMB_L1), CONCAT(id, THMB_R1), CONCAT(id, R3), CONCAT(id, BORDER_R3), \
+                                           CONCAT(id, THMB_L2), CONCAT(id, THMB_R2)
 
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
 
 
-//-------------------------
-// Keymaps definitions
-// & layer states behavior
-//-------------------------
-
 /* Keymap definition of layers (array used by core) */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [BONE]       = LAYOUT_wrapper(COMPOSE_LAYER(BONE)),
-  [WIN_BONE]   = LAYOUT_wrapper(COMPOSE_LAYER(WIN_BONE)),
-  [STANNI]     = LAYOUT_wrapper(COMPOSE_LAYER(STANNI)),
-  [LOWER]      = LAYOUT_wrapper(COMPOSE_LAYER(LOWER)),
-  [RAISE]      = LAYOUT_wrapper(COMPOSE_LAYER(RAISE)),
-  [WIN_RAISE]  = LAYOUT_wrapper(COMPOSE_LAYER(WIN_RAISE)),
-  [NEO2]       = LAYOUT_wrapper(COMPOSE_LAYER(NEO2)),
-  [ADJUST]     = LAYOUT_wrapper(COMPOSE_LAYER(ADJUST)),
+  [BNE]    = LAYOUT_wrapper(COMPOSE_LAYER(BNE)),
+  [NEO]    = LAYOUT_wrapper(COMPOSE_LAYER(NEO)),
+  [LOWER]  = LAYOUT_wrapper(COMPOSE_LAYER(LOWER)),
+  [RAISE]  = LAYOUT_wrapper(COMPOSE_LAYER(RAISE)),
+  [ADJUST] = LAYOUT_wrapper(COMPOSE_LAYER(ADJUST)),
 };

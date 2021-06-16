@@ -5,12 +5,6 @@
 #include "oled.h"
 #include "logo.h"
 
-#ifndef MIN
-#   define MIN(X, Y) ((X) < (Y) ? (X) : (Y))
-#endif
-#ifndef MAX
-#   define MAX(X, Y) ((X) > (Y) ? (X) : (Y))
-#endif
 
 void render_status(void) {
     oled_write_P(PSTR("Kyria rev1.3\n\n"), false);
@@ -18,20 +12,11 @@ void render_status(void) {
     // Host Keyboard Layer Status
     oled_write_P(PSTR("Layer: "), false);
     switch (get_highest_layer(layer_state)) {
-    case NEO2:
+    case NEO:
       oled_write_P(PSTR("NEO2\n"), false);
       break;
-    case STANNI:
-      oled_write_P(PSTR("Standard\n"), false);
-      break;
-    case WIN_RAISE:
-      oled_write_P(PSTR("WIN Raise\n"), false);
-      break;
-    case BONE:
+    case BNE:
       oled_write_P(PSTR("Bone\n"), false);
-      break;
-    case WIN_BONE:
-      oled_write_P(PSTR("WIN Bone\n"), false);
       break;
     case LOWER:
       oled_write_P(PSTR("Lower\n"), false);

@@ -3,8 +3,7 @@
 #include "rotary_encoder.h"
 #include <stdbool.h>
 
-
-void encoder_update_user(uint8_t index, bool clockwise) {
+bool encoder_update_user(uint8_t index, bool clockwise) {
   if (index == 0) {
     if (clockwise) {
       tap_code(KC_PGDN);
@@ -18,4 +17,6 @@ void encoder_update_user(uint8_t index, bool clockwise) {
       tap_code16(S(C(KC_TAB)));
     }
   }
+
+  return true;
 }
