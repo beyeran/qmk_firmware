@@ -42,6 +42,7 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BNE]    = LAYOUT_wrapper(COMPOSE_LAYER(BNE)),
   [NEO]    = LAYOUT_wrapper(COMPOSE_LAYER(NEO)),
+  [STD]    = LAYOUT_wrapper(COMPOSE_LAYER(STD)),
   [LOWER]  = LAYOUT_wrapper(COMPOSE_LAYER(LOWER)),
   [RAISE]  = LAYOUT_wrapper(COMPOSE_LAYER(RAISE)),
   [ADJUST] = LAYOUT_wrapper(COMPOSE_LAYER(ADJUST)),

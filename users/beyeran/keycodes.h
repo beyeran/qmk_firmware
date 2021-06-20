@@ -22,6 +22,7 @@
 enum layers {
   BNE,
   NEO,
+  STD,
   LOWER,
   RAISE,
   ADJUST
@@ -103,7 +104,7 @@ enum layers {
  * Adjust
  */
 #define ___ADJUST_L1___ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
-#define ___ADJUST_L2___ TG(BNE), TG(NEO), XXXXXXX, XXXXXXX, XXXXXXX
+#define ___ADJUST_L2___ TG(BNE), TG(NEO), TG(STD), XXXXXXX, XXXXXXX
 #define ___ADJUST_L3___ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 
 #define ___ADJUST_R1___ RGB_TOG, XXXXXXX, KC_UP,   XXXXXXX, XXXXXXX
@@ -161,3 +162,12 @@ enum layers {
 #define ___BNE_R1___ DE_P, DE_H,       DE_L,       DE_M,       DE_W
 #define ___BNE_R2___ DE_B, BONE_R_CTL, BONE_R_SFT, BONE_R_ALT, BONE_R_GUI
 #define ___BNE_R3___ DE_Y, DE_Z,       DE_COMM,    DE_DOT,     DE_K
+
+// Standard
+#define ___STD_L1___ DE_Q, DE_W, DE_E, DE_R, DE_T
+#define ___STD_L2___ DE_A, DE_S, DE_D, DE_F, DE_G
+#define ___STD_L3___ DE_Z, DE_X, DE_C, DE_V, DE_B
+
+#define ___STD_R1___ DE_Y, DE_U, DE_I,    DE_O,    DE_P
+#define ___STD_R2___ DE_H, DE_J, DE_K,    DE_L,    XXXXXXX
+#define ___STD_R3___ DE_N, DE_M, XXXXXXX, XXXXXXX, XXXXXXX
