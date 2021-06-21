@@ -19,7 +19,7 @@
  * Universal Parts
  */
 #define ___NEO_BORDER_R1___ XXXXXXX
-#define ___NEO_BORDER_R2___ XXXXXXX
+#define ___NEO_BORDER_R2___ DE_Y
 #define ___NEO_BORDER_R3___ XXXXXXX
 #define ___NEO_BORDER_L1___ XXXXXXX
 #define ___NEO_BORDER_L2___ XXXXXXX
