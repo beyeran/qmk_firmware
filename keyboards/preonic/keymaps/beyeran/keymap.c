@@ -1,4 +1,4 @@
-/* Copyright 2015-2017 Jack Humbert
+/* Copyright 2021 A.P.B. <mail@beyeran.site>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,154 +15,28 @@
  */
 
 #include QMK_KEYBOARD_H
-#include "muse.h"
-#include "keymap_german_osx.h"
 
-#define KC_APE LALT(LCTL(KC_DEL))
-
-// Home row modifier setup
-#define GUI_A LGUI_T(DE_A)
-#define ALT_O LALT_T(DE_O)
-#define SFT_E LSFT_T(DE_E)
-#define CTL_F LCTL_T(DE_U)
-
-#define GUI_C LGUI_T(DE_C)
-#define AL2_T LALT_T(DE_T)
-#define SFT_I LSFT_T(DE_I)
-#define CTL_E LCTL_T(DE_E)
-
-#define CTL_H RCTL_T(DE_H)
-#define SF2_T RSFT_T(DE_T)
-#define ALT_N LALT_T(DE_N)
-#define GUI_S RGUI_T(DE_S)
-
-#define CTL_N RCTL_T(DE_N)
-#define SF2_R RSFT_T(DE_R)
-#define ALT_S LALT_T(DE_S)
-#define GUI_G RGUI_T(DE_G)
+#include "keymap.h"
+#include "keycodes.h"
 
 
-enum preonic_layers {
-  _QWERTY,
-  _BONE2,
-  _DVORAK,
-  _LOWER,
-  _RAISE,
-  _ADJUST
-};
+#define CONC_KEY(id, name) ___ ## id ## _ ## name ## ___
 
-enum preonic_keycodes {
-  QWERTY = SAFE_RANGE,
-  BONE2,
-  DVORAK,
-  LOWER,
-  RAISE,
-  BACKLIT
-};
+#define COMPOSE_LAYER(id) \
+  CONC_KEY(id, BORDER_L1), CONC_KEY(id, TOP), CONC_KEY(id, BORDER_R1),  \
+    CONC_KEY(id, BORDER_L2), CONC_KEY(id, L1), CONC_KEY(id, R1), CONC_KEY(id, BORDER_R2), \
+    CONC_KEY(id, BORDER_L3), CONC_KEY(id, L2), CONC_KEY(id, R2), CONC_KEY(id, BORDER_R3), \
+    CONC_KEY(id, BORDER_L4), CONC_KEY(id, L3), CONC_KEY(id, R3), CONC_KEY(id, BORDER_R4), \
+    CONC_KEY(id, BORDER_L5), CONC_KEY(id, BOTTOM), CONC_KEY(id, BORDER_R5)
 
+#define LAYOUT_wrapper(...) LAYOUT_preonic_grid(__VA_ARGS__)
 
+/* Keymap definition of layers (array used by core) */
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-[_QWERTY] = LAYOUT_preonic_grid(
-  KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
-  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_RSFT,
-  KC_GRV,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
-  BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
-),
-
-[_BONE2] = LAYOUT_preonic_grid(
-  KC_ESC,  KC_7,    KC_5,    KC_3,    KC_1,    KC_9,    KC_0,    KC_2,    KC_4,    KC_6,    KC_8,    KC_BSPC,
-  KC_TAB,  KC_J,    KC_D,    KC_U,    KC_A,    KC_X,    KC_P,    KC_H,    KC_L,    KC_M,    KC_W,    KC_ENT,
-  KC_GRV,  GUI_C,   AL2_T,   SFT_I,   CTL_E,   KC_O,    KC_B,    CTL_N,   SF2_R,   ALT_S,   GUI_G,   KC_Q,
-  KC_LSFT, KC_F,    KC_V,    DE_ADIA, DE_UDIA, DE_ODIA, DE_Y,    DE_Z,    DE_COMM, DE_DOT,  KC_K,    KC_RSFT,
-  KC_CAPS, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_RALT, KC_RGUI, KC_RCTL, KC_RSPC
-),
-
-[_DVORAK] = LAYOUT_preonic_grid(
-  KC_ESC,  KC_7,    KC_5,    KC_3,    KC_1,    KC_9,    KC_0,    KC_2,    KC_4,    KC_6,    KC_8,    KC_BSPC,
-  KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Z,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_ENT,
-  KC_GRV,  GUI_A,   ALT_O,   SFT_E,   CTL_F,   KC_I,    KC_D,    CTL_H,   SF2_T,   ALT_N,   GUI_S,   KC_SLSH,
-  KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Y,    KC_RSFT,
-  KC_CAPS, KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_RALT, KC_RGUI, KC_RCTL, KC_RSPC
-),
-
-[_RAISE] = LAYOUT_preonic_grid(
-    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,      KC_F10,  KC_F11,  KC_F12,
-    XXXXXXX, DE_ACUT, DE_UNDS, DE_LBRC, DE_RBRC, DE_LABK, DE_EXLM, DE_CIRC, S(DE_CIRC), DE_EQL,  DE_AMPR, XXXXXXX,
-    XXXXXXX, DE_BSLS, DE_SLSH, DE_LCBR, DE_RCBR, DE_ASTR, DE_QUES, DE_LPRN, DE_RPRN,    DE_MINS, DE_COLN, DE_AT,
-    XXXXXXX, DE_HASH, DE_DLR,  DE_PIPE, DE_TILD, DE_GRV,  DE_PLUS, DE_PERC, DE_DQUO,    DE_QUOT, DE_SCLN, XXXXXXX,
-    _______, _______, _______, _______, _______, _______, _______, _______, XXXXXXX,    _______, _______, _______
-),
-
-[_LOWER] = LAYOUT_preonic_grid(
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, DE_LABK, DE_RABK, _______, _______, _______, KC_UP,   _______, _______, KC_APE,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY
-),
-
-[_ADJUST] = LAYOUT_preonic_grid(
-  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
-  _______, RESET,   DEBUG,   _______, _______, _______, _______, TERM_ON, TERM_OFF,_______, _______, KC_DEL,
-  _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  BONE2,   DVORAK,  XXXXXXX, _______,
-  _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
-)
-};
-
-void persistent_default_layer_set(uint16_t default_layer) {
-  eeconfig_update_default_layer(default_layer);
-  default_layer_set(default_layer);
-}
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-  case QWERTY:
-    if (record->event.pressed) {
-      persistent_default_layer_set(1UL<<_QWERTY);
-    }
-    SEND_STRING(SS_TAP(X_F15));
-    return false;
-    break;
-  case BONE2:
-    if (record->event.pressed) {
-      persistent_default_layer_set(1UL<<_BONE2);
-    }
-    SEND_STRING(SS_TAP(X_F16));
-    return false;
-    break;
-  case DVORAK:
-    if (record->event.pressed) {
-      persistent_default_layer_set(1UL<<_DVORAK);
-    }
-    SEND_STRING(SS_TAP(X_F17));
-    return false;
-    break;
-  case LOWER:
-    if (record->event.pressed) {
-      layer_on(_LOWER);
-      update_tri_layer(_LOWER, _RAISE, _ADJUST);
-    } else {
-      layer_off(_LOWER);
-      update_tri_layer(_LOWER, _RAISE, _ADJUST);
-    }
-    return false;
-    break;
-  case RAISE:
-    if (record->event.pressed) {
-      layer_on(_RAISE);
-      update_tri_layer(_LOWER, _RAISE, _ADJUST);
-    } else {
-      layer_off(_RAISE);
-      update_tri_layer(_LOWER, _RAISE, _ADJUST);
-    }
-    return false;
-    break;
-  case BACKLIT:
-    return true;
-    break;
-  default:
-    return true;
-  }
+  [BNE]    = LAYOUT_wrapper(COMPOSE_LAYER(NEO)),
+  [NEO]    = LAYOUT_wrapper(COMPOSE_LAYER(BNE)),
+  [STD]    = LAYOUT_wrapper(COMPOSE_LAYER(STD)),
+  [LOWER]  = LAYOUT_wrapper(COMPOSE_LAYER(LOWER)),
+  [RAISE]  = LAYOUT_wrapper(COMPOSE_LAYER(RAISE)),
+  [ADJUST] = LAYOUT_wrapper(COMPOSE_LAYER(ADJUST)),
 };
